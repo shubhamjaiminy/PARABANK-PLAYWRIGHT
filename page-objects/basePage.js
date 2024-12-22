@@ -130,4 +130,34 @@ export class Basepage {
       )
     ).toBeVisible();
   };
+  TrasactionByApi = async () => {
+    const cookies = await this.page.context().cookies();
+
+    // Find the cookie you want to store (e.g., session or login cookie)
+    const loginCookie = cookies.find((cookie) => cookie.name === 'JSESSIONID'); // Adjust cookie name as needed
+
+    // Store the cookie in a variable (you can also store it in a global variable if needed for reuse)
+    console.log('Stored Cookie:', loginCookie);
+
+    const response = await fetch(
+      `https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/${ACCOUNT_NUMBER_ON_DETAILSPAGE}/transactions/amount/100?timeout=30000`,
+      {
+        method: 'GET',
+        headers: {
+          Cookie: `JSESSIONID=${loginCookie.value}`,
+        },
+      }
+    );
+    console.log(`JSESSIONID=${loginCookie.value}`);
+    expect(response.status).toBe(200); // Check if status code is 200
+    const responseBody = await response.json();
+    console.log('Response body:', responseBody); // Log the response body
+    expect(Array.isArray(responseBody)).toBe(true); // Ensure the response is an array
+    const transaction = responseBody[0]; // Assuming the response contains a list of transactions
+    expect(transaction).toHaveProperty('id'); // Check if id exists
+    expect(transaction).toHaveProperty(
+      'accountId',
+      Number(ACCOUNT_NUMBER_ON_DETAILSPAGE)
+    );
+  };
 }
