@@ -45,7 +45,7 @@ npm (Node Package Manager)
 Playwright Browsers
 
 2️⃣ Clone the Repository
-git clone  https://github.com/shubhamjaiminy/para-bank-automation.git
+git clone  [https://github.com/shubhamjaiminy/para-bank-automation.git](https://github.com/shubhamjaiminy/PARABANK-PLAYWRIGHT)
 cd para-bank-automation
 
 3️⃣ Install Dependencies
