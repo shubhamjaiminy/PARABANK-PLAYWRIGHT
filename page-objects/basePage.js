@@ -133,10 +133,8 @@ export class Basepage {
   TrasactionByApi = async () => {
     const cookies = await this.page.context().cookies();
 
-    // Find the cookie you want to store (e.g., session or login cookie)
-    const loginCookie = cookies.find((cookie) => cookie.name === 'JSESSIONID'); // Adjust cookie name as needed
+      const loginCookie = cookies.find((cookie) => cookie.name === 'JSESSIONID'); // Adjust cookie name as needed
 
-    // Store the cookie in a variable (you can also store it in a global variable if needed for reuse)
     console.log('Stored Cookie:', loginCookie);
 
     const response = await fetch(

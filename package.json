@@ -7,11 +7,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "playwright": "^1.49.1"
-  },
   "devDependencies": {
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.51.1",
     "@types/node": "^22.10.2"
   }
 }
