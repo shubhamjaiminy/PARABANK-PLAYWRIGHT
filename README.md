@@ -11,13 +11,13 @@ Playwright’s powerful capabilities enable end-to-end (E2E) testing for both UI
 
 Tech Stack
 
-Component	Technology Used
-Automation Framework	Playwright
-Programming Language	JavaScript
-Assertion Library	Playwright Test
-API Testing	Playwright's Request Module
-Reporting	Playwright HTML Reporter
-CI/CD	Jenkins
+Component	                     Technology Used
+Automation Framework	            Playwright
+Programming Language	            JavaScript
+Assertion Library	                Playwright Test
+API Testing	                        Playwright's Request Module
+Reporting	                        Playwright HTML Reporter
+CI/CD	                            Jenkins
 
 📌 Project Structure
 
