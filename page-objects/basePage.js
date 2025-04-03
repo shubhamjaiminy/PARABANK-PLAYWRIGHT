@@ -6,6 +6,7 @@ export class Basepage {
     this.page = page;
   }
   registerUser = async (randomUsername, password, baseURL) => {
+    await this.page.waitForTimeout(2000);
     await this.page.getByRole('link', { name: 'Register' }).click();
     await this.page.locator('[id="customer\\.firstName"]').fill(randomUsername);
     await this.page.locator('[id="customer\\.lastName"]').fill('jaim');
@@ -29,12 +30,16 @@ export class Basepage {
     await this.page.getByRole('heading', { name: `${randomUsername}` }).click();
     await expect(this.page).toHaveURL(`${baseURL}/parabank/register.htm`);
   };
+
+
   login = async (randomUsername, password) => {
     await this.page.getByRole('link', { name: 'Log Out' }).click();
     await this.page.locator('input[name="username"]').fill(randomUsername);
     await this.page.locator('input[name="password"]').fill(password);
     await this.page.getByRole('button', { name: 'Log In' }).click();
   };
+
+
   globalMenuVerification = async () => {
     const menuItems = [
       'Open New Account',
@@ -49,6 +54,8 @@ export class Basepage {
       await expect(this.page.locator(`text=${item}`)).toBeVisible();
     }
   };
+
+
   createSavingAccount = async () => {
     await this.page.getByRole('link', { name: 'Open New Account' }).click();
     await this.page.locator('#type').selectOption('1');
@@ -66,7 +73,6 @@ export class Basepage {
     await expect(
       this.page.locator(`//*[text()='Account Details']`)
     ).toBeVisible();
-    // check the account type and account number are  same at account details page
     await this.page.waitForTimeout(3000);
     const ACCOUNT_TYPE = await this.page.locator('#accountType').textContent();
     ACCOUNT_NUMBER_ON_DETAILSPAGE = await this.page
@@ -75,6 +81,8 @@ export class Basepage {
     expect(ACCOUNT_TYPE.trim()).toMatch('SAVINGS');
     expect(ACCOUNT_NUMBER.trim()).toMatch(ACCOUNT_NUMBER_ON_DETAILSPAGE);
   };
+
+
   transferFunds = async () => {
     await this.page.getByRole('link', { name: 'Transfer Funds' }).click();
     await this.page.locator(`[id="amount"]`).fill('100');
@@ -95,6 +103,8 @@ export class Basepage {
       this.page.getByText(`See Account Activity for more details.`)
     ).toBeVisible();
   };
+
+
   billPayment = async () => {
     await this.page.getByRole('link', { name: 'Bill Pay' }).click();
     await this.page.locator('input[name="payee\\.name"]').fill('john');
@@ -130,6 +140,8 @@ export class Basepage {
       )
     ).toBeVisible();
   };
+
+  
   TrasactionByApi = async () => {
     const cookies = await this.page.context().cookies();
 
