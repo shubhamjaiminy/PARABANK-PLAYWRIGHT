@@ -1,7 +1,7 @@
 import { expect } from 'playwright/test';
 let ACCOUNT_NUMBER;
 let ACCOUNT_NUMBER_ON_DETAILSPAGE;
-export class Basepage {
+export class BasePage {
   constructor(page) {
     this.page = page;
   }
