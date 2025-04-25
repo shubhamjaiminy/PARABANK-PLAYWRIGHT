@@ -48,7 +48,9 @@ cd para-bank-automation
 3️⃣ Install Dependencies
 npm install
 4️⃣ Install Playwright Browsers
+```sh
 npx playwright install
+```
 📌 Running Tests
 🔹 Run All Tests
 npx playwright test
